@@ -45,7 +45,7 @@ module.exports = function makeWebpackConfig() {
 
     // Output path from the view of the page
     // Uses webpack-dev-server in development
-    publicPath: isProd ? '/' : 'http://0.0.0.0:8080/',
+    publicPath: '/',
 
     // Filename for entry points
     // Only adds hash in build mode
@@ -124,6 +124,10 @@ module.exports = function makeWebpackConfig() {
       // Allow loading html through js
       test: /\.html$/,
       loader: 'raw-loader'
+    }, {
+      test: /\.scss$/,
+      exclude: /node_modules/,
+      loaders: ['raw-loader', 'sass-loader'] // sass-loader not scss-loader
     }]
   };
 
